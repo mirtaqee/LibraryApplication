@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-12">
+        <div>
+            <a href="javascript: void(0);" (click)="goBack()" routerLink="/">Back</a>
+        </div>
+        <br>
+        <form ngNativeValidate>  
+            <h3>Add / Update Book</h3>
+            <div class="form-group">
+            <label for="isbn">ISBN(Book Id)</label>
+            <input type="number" name="isbn" id="isbn" [disabled]="isEditBook" class="form-control" required [(ngModel)]="book.id" placeholder="Enter ISBN">
+            </div>
+            <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-control" required [(ngModel)]="book.title" placeholder="Enter Title">
+            </div>
+            <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" class="form-control" required [(ngModel)]="book.author" placeholder="Enter Author">
+            </div>
+            <div class="form-group">
+            <label for="publisher">Publisher</label>
+            <input type="text" name="publisher" id="publisher" class="form-control" required [(ngModel)]="book.publisher" placeholder="Enter Publisher">
+            </div>
+            <div class="form-group">
+                <button (click)="addBook()" *ngIf="!isEditBook" class="btn btn-primary">Submit</button>
+                <button (click)="updateBook()" *ngIf="isEditBook" class="btn btn-primary">Update</button>
+                
+                <div class="spinner-border text-primary" *ngIf="isLoading" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>    
+        </form>
+    </div>
+</div>
